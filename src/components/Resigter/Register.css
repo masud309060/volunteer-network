@@ -1,0 +1,19 @@
+
+.form-area {
+    margin: auto auto;
+    width: 500px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 20px 15px;
+}
+.form-area h2 {
+    text-align: center;
+    color: #333;
+}
+.form-area form {
+    margin-left: 20px;
+}
+.register-logo {
+    text-align: center;
+    margin: 20px auto;
+}

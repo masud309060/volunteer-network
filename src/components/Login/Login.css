@@ -1,0 +1,36 @@
+.login-area {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    border: 1px solid gray;
+    border-radius: 10px;
+}
+.login-field h2 {
+    text-align: center;
+    color: #333;
+    font-size: 30px;
+
+}
+.login-field {
+    align-items: center;
+    padding: 100px 50px 150px;
+}
+
+.loginG {
+    display: flex;
+    align-items: center;
+    border: 1px solid gray;
+    padding: 4px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .5s;
+}
+.loginG span {
+    margin: auto;
+}
+.loginG:hover {
+    background-color: grey;
+    color: white;
+}

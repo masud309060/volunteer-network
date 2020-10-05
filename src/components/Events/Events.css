@@ -1,0 +1,20 @@
+.event-area {
+    margin: 20px;
+    display: flex;
+    width: 550px;
+    background-color: lightgray;
+    border-radius: 10px;
+
+}
+.event-img img{
+    height: 180px;
+    width: 250px;
+    margin: 10px;
+}
+.event-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+    color: #333;
+}
