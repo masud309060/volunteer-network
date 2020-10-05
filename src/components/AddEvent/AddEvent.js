@@ -50,7 +50,7 @@ const AddEvent = () => {
                     <div>
                         <TextField 
                         id="standard-basic" 
-                        label="Standard" 
+                        label="Event Name" 
                         onBlur={e => setTitle(e.target.value)}
                         />
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
