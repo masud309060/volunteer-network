@@ -9,17 +9,17 @@ import moment from 'moment';
 const Events = () => {
     const [volunteer, setVolunteer] = useState([])
     const {user} = useContext(userContext)
-    const [userLogin, setLoginUser] = user;
+    const [loginUser, setLoginUser] = user;
 
     const loadVolunteer = () => {
-        fetch('https://enigmatic-meadow-20556.herokuapp.com/volunteer?email='+userLogin.email)
+        fetch('https://enigmatic-meadow-20556.herokuapp.com/volunteer?email='+loginUser.email)
         .then(res => res.json())
         .then(data => setVolunteer(data))
     }
 
     useEffect(()=> {
         loadVolunteer()
-    },[userLogin.email])
+    },[volunteer.length])
 
     const handlaDeleteVolunteer = (id) =>{
         fetch(`https://enigmatic-meadow-20556.herokuapp.com/deleteVolunteer/${id}`,{
