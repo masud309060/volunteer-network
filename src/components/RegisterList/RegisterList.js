@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './RegisterList.css'
-import logo from '../../volunteer-network-main/logos/Group 1329.png'
-import { userContext } from '../../App';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -11,10 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import deleteIcon from '../../volunteer-network-main/logos/trash-2 9.png'
-import cloudIcon from '../../volunteer-network-main/logos/cloud-upload-outline 1.png'
-import plusIcon from '../../volunteer-network-main/logos/plus 1.png'
-import { Button } from '@material-ui/core';
 import moment from 'moment';
+import { userContext } from '../../App';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -43,41 +39,48 @@ const useStyles = makeStyles({
     },
   });
 
+
 const RegisterList = () => {
     const classes = useStyles();
+    // dataLoad 
     const {user} = useContext(userContext)
     const [loginUser] = user
     const [volunteers, setVolunteers] = useState([])
     
+    const loadAllVolunteers = () =>{
+      fetch('https://enigmatic-meadow-20556.herokuapp.com/volunteers?email='+loginUser.email)
+      .then(res => res.json())
+      .then(data => setVolunteers(data))
+    }
+
     useEffect(() => {
-        fetch('http://localhost:5000/volunteers?email='+loginUser.email)
+        loadAllVolunteers()
+    },[volunteers.length])
+
+    const handleDeleteVolunteers = (id) => {
+      fetch(`https://enigmatic-meadow-20556.herokuapp.com/deleteVolunteers/${id}`,{
+            method: "DELETE"
+        })
         .then(res => res.json())
-        .then(data => setVolunteers(data))
-    },[loginUser.email])
+        .then(data => {
+          console.log(data)
+          if(data){
+            loadAllVolunteers()
+          }
+        })
+    }
 
     return (
         <div>
-            <div className="reg-bar">
-                <img src={logo} alt="" height="60"/>
-                <h3>Volunteer register list</h3>
-            </div>
-            <div className="reg-area">
-                <div className="reg-area-left">
-                    <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
-                        <img src={cloudIcon} alt="" height="25"/> 
-                        <h4 style={{color:"#00a8ff",marginLeft:"5px"}}> Volunteer registration list</h4>
-                    </div>
-                    <Button><img src={plusIcon} alt="" height="20"/> Add event</Button>
-                </div>
-                <div className="reg-area-right">
-                <TableContainer component={Paper}>
+            <TableContainer component={Paper}>
                     <Table className={classes.table} aria-label="customized table">
                         <TableHead>
                         <TableRow>
-                            <StyledTableCell>Name</StyledTableCell>
-                            <StyledTableCell align="right">Email Id</StyledTableCell>
-                            <StyledTableCell align="right">Registating Date</StyledTableCell>
-                            <StyledTableCell align="right">Volunteer List</StyledTableCell>
+                            <StyledTableCell>SL</StyledTableCell>
+                            <StyledTableCell align="left">Name</StyledTableCell>
+                            <StyledTableCell align="left">Email Id</StyledTableCell>
+                            <StyledTableCell align="left">Registating Date</StyledTableCell>
+                            <StyledTableCell align="left">Volunteer List</StyledTableCell>
                             <StyledTableCell align="right">Action</StyledTableCell>
                         </TableRow>
                         </TableHead>
@@ -85,21 +88,22 @@ const RegisterList = () => {
                         {volunteers.map( (row , index) => (
                             <StyledTableRow key={index}>
                             <StyledTableCell component="th" scope="row">
-                                {row.name}
+                                {index + 1}
                             </StyledTableCell>
-                            <StyledTableCell align="right">{row.email}</StyledTableCell>
-                            <StyledTableCell align="right">{moment(row.date).subtract(10,'days').calendar()}</StyledTableCell>
-                            <StyledTableCell align="right">{row.event.name}</StyledTableCell>
+                            <StyledTableCell align="left">{row.name}</StyledTableCell>
+                            <StyledTableCell align="left">{row.email}</StyledTableCell>
+                            <StyledTableCell align="left">{moment(row.date).subtract(10,'days').calendar()}</StyledTableCell>
+                            <StyledTableCell align="left">{row.event.name}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <img src={deleteIcon} alt="" className="deleteIcon"/>
+                                <span onClick={()=>handleDeleteVolunteers(`${row._id}`)}>
+                                  <img src={deleteIcon} alt="" className="deleteIcon"/>
+                                </span>
                             </StyledTableCell>
                             </StyledTableRow>
                         ))}
                         </TableBody>
                     </Table>
                     </TableContainer>
-                </div>
-            </div>
         </div>
     );
 };

@@ -25,7 +25,7 @@ const Home = () => {
     const [events, setEvents] = allEvents
     // console.log(events)
 
-    const colorSheet = ["#d35400","#8e44ad", "#9b59b6","#2ecc71", "#8c7ae6","#273c75","#d35400","#8e44ad", "#9b59b6","#2ecc71", "#8c7ae6","#273c75","#d35400","#8e44ad", "#9b59b6","#2ecc71", "#8c7ae6","#273c75","#8c7ae6","#273c75"]
+    const colorSheet = ["#d35400","#8e44ad", "#9b59b6","#2ecc71", "#8c7ae6","#273c75","#d35400","#8e44ad", "#9b59b6","#2ecc71", "#8c7ae6","#273c75","#d35400","#8e44ad", "#9b59b6","#2ecc71", "#8c7ae6","#273c75","#8c7ae6","#d35400","#273c75","#8c7ae6","#273c75","#8c7ae6","#273c75"]
     
     return (
         <div>

@@ -17,4 +17,9 @@
     justify-content: space-between;
     margin: 10px;
     color: #333;
+    
+}
+.event-info h3 {
+    font-size: 20px;
+    color: #333;
 }

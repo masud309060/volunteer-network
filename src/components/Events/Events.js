@@ -12,11 +12,9 @@ const Events = () => {
     const [userLogin, setLoginUser] = user;
 
     const loadVolunteer = () => {
-            fetch('http://localhost:5000/volunteer?email='+userLogin.email)
-            .then(res => res.json())
-            .then(data => {
-                setVolunteer(data)
-            })
+        fetch('https://enigmatic-meadow-20556.herokuapp.com/volunteer?email='+userLogin.email)
+        .then(res => res.json())
+        .then(data => setVolunteer(data))
     }
 
     useEffect(()=> {
@@ -24,7 +22,7 @@ const Events = () => {
     },[userLogin.email])
 
     const handlaDeleteVolunteer = (id) =>{
-        fetch(`http://localhost:5000/deleteVolunteer/${id}`,{
+        fetch(`https://enigmatic-meadow-20556.herokuapp.com/deleteVolunteer/${id}`,{
             method: "DELETE"
         })
         .then(res => res.json())
@@ -47,7 +45,7 @@ const Events = () => {
                         </div>
                         <div className="event-info">
                             <div>
-                                <h2>{data.event.name}</h2>
+                                <h3>{data.event.name}</h3>
                                 <h3>{moment(data.date).format("MMM Do YYYY")}</h3>
                             </div>
                             <div style={{marginLeft: "150px"}}>

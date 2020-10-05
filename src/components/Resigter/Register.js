@@ -33,7 +33,7 @@ const Register = () => {
     const handleRegSubmit = () => {
         const description = document.getElementById('description').value;
         const UsersAllData = {...loginUser, date: selectedDate, description:description , event:joinEvent}
-        fetch('http://localhost:5000/addVolunteer', {
+        fetch('https://enigmatic-meadow-20556.herokuapp.com/addVolunteer', {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(UsersAllData)

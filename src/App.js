@@ -10,8 +10,9 @@ import {
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Events from './components/Events/Events';
 import NoMatch from './components/NoMatch/NoMatch';
-import RegisterList from './components/RegisterList/RegisterList';
 import Register from './components/Resigter/Register';
+import Admin from './components/Admin/Admin';
+import AddEvent from './components/AddEvent/AddEvent';
 
 
 export const userContext = createContext()
@@ -26,7 +27,7 @@ function App() {
     error: ""
   })
   useEffect(() => {
-    fetch('http://localhost:5000/events')
+    fetch('https://enigmatic-meadow-20556.herokuapp.com/events')
     .then(res => res.json())
     .then(data => setEvents(data))
   },[])
@@ -53,7 +54,7 @@ function App() {
           </PrivateRoute>
 
           <PrivateRoute path="/admin">
-            <RegisterList></RegisterList>
+            <Admin></Admin>
           </PrivateRoute>
 
           <Route path="/events">

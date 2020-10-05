@@ -1,0 +1,28 @@
+.form-area{
+    width: 800px;
+    text-align: center;
+    background-color: white;
+    border: none;
+
+    
+}
+input[type="file"] {
+    display: none;
+}
+.file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: .5s;
+    color: #0292e6e8;
+}
+.file-upload:hover {
+    background-color: lightblue;
+}
+.send-event {
+    background-color: #0984e3;
+    padding: 0 10px;
+    margin-left: auto;
+}

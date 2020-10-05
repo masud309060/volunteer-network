@@ -1,4 +1,5 @@
 import { Card, CardActionArea, CardContent, CardMedia, makeStyles } from "@material-ui/core";
+import { green } from "@material-ui/core/colors";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { userContext } from "../../App";
@@ -19,14 +20,14 @@ const useStyles = makeStyles({
 
 const Album = (props) => {
     const classes = useStyles();
-    const color = props.color;
+    const color = props.color || green;
     const {name, img, _id} = props.events
 
     const {join} = useContext(userContext)
     const [joinEvent, setJoinEvent] = join
 
     const handleJoinEvent = (id) => {
-      fetch('http://localhost:5000/getEvent/'+id)
+      fetch('https://enigmatic-meadow-20556.herokuapp.com/getEvent/'+id)
       .then(res => res.json())
       .then(data => {
         setJoinEvent(data)
