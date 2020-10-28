@@ -4,7 +4,7 @@
 
 A non-profit social organization who works for different positive activities. For that they need some  volunteers to maintain activities. people connect here by this site of his own free will. One will join more than one activities and work his available time. 
 
-[Live Site] (https://volunteer-network-d9618.web.app/)
+[Live Site](https://volunteer-network-d9618.web.app/)
 
 ### `Project Specifications`
 - Awesome and fresh looking landing page.
